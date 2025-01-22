@@ -1,0 +1,15 @@
+<root>
+  <paths>
+    <start_date name="start date"></start_date>
+    <end_date name="end date"></end_date>
+    <aoi_wkt name="aoi wkt"/>
+    <aoi_geojson name="aoi geojson"></aoi_geojson>
+    <s1_folder name="folder for s1 series"></s1_folder>
+    <s2_folder name="folder for s2 series"></s2_folder>
+    <weather_folder name="folder for weather data"></weather_folder>
+    <rasdaman_user name="rasdaman user name"></rasdaman_user>
+    <rasdaman_passw name="rasdaman user password"></rasdaman_passw>
+    <pros_seq name="processing sequence"></pros_seq>
+    <gdd_base name="gdd base"></gdd_base>
+  </paths>
+</root>
