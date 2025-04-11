@@ -51,9 +51,9 @@ class GuiCreation:
         self.executionfunction = execution_function
         self.log_output = LogOutput(self.userSettings)
 
-        log_file_path = self.userSettings.weather_folder + "log_output/"
-        print("Log file created at: " + log_file_path)
-        print("Rasdaman benchmarking at: " + log_file_path)
+        log_file_path = self.log_output.logfile_dir + "log_output/"
+        print("Log file created at: " + self.log_output.logfile_dir)
+        print("Rasdaman benchmarking at: " + self.log_output.logfile_dir)
 
         self.processingThread = threading.Thread(target=self.executionfunction,
                                               args=(self.sentinel1_active,

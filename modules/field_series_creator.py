@@ -51,7 +51,7 @@ from modules.field_id_creator import FieldIdCreation
 class FieldSeriesCreator:
 
     # The macro to indicate processing is done on points.
-    FROM_POINT = True
+    FROM_POINT = False
 
     # The bounding box to create around the given point.
     POINT_BB = 2000
@@ -314,6 +314,12 @@ class FieldSeriesCreator:
                     poly = geo.transfer_geom(folder_to_fields + field_items[j], 25832, 25832)
                     if from_point:
                         poly = geo.create_bounding_box(poly, point_bb, point_bb)
+                    elif isinstance(poly, Point):
+                        print("FROM_POINT macro set to false. Can not run with Points.")
+                        return
+
+                    if not poly:
+                        return
 
                     polygon = str(poly.wkt).replace(' (', '(')
 
@@ -482,6 +488,12 @@ class FieldSeriesCreator:
                     poly = geo.transfer_geom(folder_to_fields + field_items[j], 25832, 25832)
                     if from_point:
                         poly = geo.create_bounding_box(poly, point_bb, point_bb)
+                    elif isinstance(poly, Point):
+                        print("FROM_POINT macro set to false. Can not run with Points.")
+                        return
+
+                    if not poly:
+                        return
 
                     polygon = str(poly.wkt).replace(' (', '(')
 

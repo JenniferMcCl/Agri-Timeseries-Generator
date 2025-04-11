@@ -17,6 +17,7 @@
 import os
 import datetime
 import csv
+from pathlib import Path
 
 
 class LogOutput:
@@ -30,14 +31,19 @@ class LogOutput:
     __totalTime = 0
     __amountScenes = 0
     __userSettings = None
+    logfile_dir = ""
 
     def __init__(self, user_settings):
 
         self.__userSettings = user_settings
 
+        current_dir = Path.cwd()
+        parent_dir = current_dir.parent
+        self.logfile_dir = str(parent_dir) + "/log_output_agri_ts_gen/"
+
         # Create log output folder if not available
-        if not os.path.exists(self.__userSettings.weather_folder + "log_output/") and self.__userSettings.weather_folder != "":
-            os.makedirs(self.__userSettings.weather_folder +"log_output/")
+        if not os.path.exists(self.logfile_dir):
+            os.makedirs(self.logfile_dir)
 
     def createLogOutputFile(self, prefixName):
 
@@ -46,8 +52,8 @@ class LogOutput:
         time = ("%s:%s:%s" % (currentDatetime.hour, currentDatetime.minute, currentDatetime.second))
 
         self.__error = False
-        fileName = self.__userSettings.weather_folder+"log_output/" + "log_" + date + "_" + time + "_" + prefixName +".txt"
-        procTimesName = self.__userSettings.weather_folder + "log_output/" + "proc_times_" + date + "_" + time + "_" + \
+        fileName = self.logfile_dir + "log_" + date + "_" + time + "_" + prefixName +".txt"
+        procTimesName = self.logfile_dir + "proc_times_" + date + "_" + time + "_" + \
                         prefixName + ".csv"
 
         print("Log file created at: " + fileName)

@@ -18,6 +18,8 @@ from shapely.geometry import shape, Polygon, MultiPolygon
 from shapely import wkt, ops
 from pyproj import Transformer
 
+# Lots of helpers to translate coordinate types and systems.
+
 
 def load_geojson(geo_json_file):
     with open(geo_json_file) as data:
@@ -125,7 +127,10 @@ def create_bounding_box(center_geometry, width, height):
         :param height:
         :return: polygon: The polygon created
     """
-    if isinstance(center_geometry, Point):
+    if isinstance(center_geometry, Polygon):
+        print("FROM_POINT macro set to false. Can not run with Polygons")
+        return None
+    elif isinstance(center_geometry, Point):
         # Extract coordinates from the Point object
         cx, cy = center_geometry.x, center_geometry.y
     elif isinstance(center_geometry, tuple) and len(center_geometry) == 2:
