@@ -72,6 +72,10 @@ Following information must be given:
 
 For each geosjon a subfolder is created for the time series when executed.
 
+Timeseries can be created for either Polygons or Points.
+For each case the FROM_POINT Macro from the FieldSeriesCreator class must be set to match the type of the given geojsons.
+Furthermore the POINT_BB macro can be set to a value defining the size of a bounding box that will be created around the given points.
+
 ## Required Python Packages
 
 The Python packages/versions required to run this app are following:
