@@ -43,6 +43,8 @@ from modules.file_utils import FileUtils
 import modules.geo_position as geo
 from modules.veg_specific_tiff_operations import VegSpecificTiffOperations
 
+from shapely.geometry import Point
+
 # CreateAgriDatabase repository must be accessible
 from modules.access_sql import AccessSql
 from modules.field_id_creator import FieldIdCreation
